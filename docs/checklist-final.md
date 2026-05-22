@@ -50,5 +50,12 @@
 ## Validacion
 
 - [x] `.\mvnw.cmd clean verify`
-- [ ] `docker compose up --build`
-- [ ] Prueba manual de endpoints
+- [x] `docker compose up --build -d`
+- [x] Prueba manual de endpoints
+
+## Evidencia de ejecucion Docker
+
+- `docker compose ps`: `dino-app` arriba en `8080` y `dino-postgres` saludable en `5433`.
+- `POST /api/simulation/run`: proceso 49 visitantes en 3 pasos.
+- `GET /api/reports/summary`: total de ingresos `7166.50`, gastos `702.00`, utilidad neta `6464.50`.
+- Validacion directa en PostgreSQL: ingresos, gastos y eventos persistidos.

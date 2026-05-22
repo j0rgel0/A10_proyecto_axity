@@ -63,6 +63,8 @@ La API queda disponible en:
 http://localhost:8080
 ```
 
+PostgreSQL queda publicado en `localhost:5433` por default para evitar choques con instalaciones locales. Dentro de Docker la aplicacion usa `db:5432`.
+
 ## API
 
 Ejecutar simulacion:

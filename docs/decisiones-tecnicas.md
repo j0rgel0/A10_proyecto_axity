@@ -12,6 +12,8 @@ Se incluye Maven Wrapper para que el proyecto no dependa de una instalacion glob
 
 PostgreSQL es la base operativa, levantada por Docker Compose. H2 se usa solo en pruebas, en modo compatible con PostgreSQL, para mantener el ciclo rapido y reproducible.
 
+Docker publica PostgreSQL en el puerto local `5433` por default para no chocar con instalaciones locales en `5432`; internamente la aplicacion usa `db:5432`.
+
 ## Liquibase
 
 La estructura de ingresos, gastos y eventos se crea por migraciones versionadas. Los changesets usan `A10 Jorge Lopez` como autor.
