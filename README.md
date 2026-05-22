@@ -110,6 +110,23 @@ JaCoCo falla el build si la cobertura de lineas baja de 65%. El reporte se gener
 target/site/jacoco/index.html
 ```
 
+### Mapa De Pruebas Automatizadas
+
+La suite actual ejecuta 30 pruebas y esta organizada por capa para validar reglas de negocio, persistencia y superficie REST:
+
+- `DomainModelTest`: reglas de turista, dinosaurio, vehiculo y zona.
+- `FactoryTest`: creacion inicial de turistas y dinosaurios desde configuracion.
+- `EventStrategyTest`: comportamiento de apagon, tormenta, ofertas, escape y falla de vehiculos.
+- `FinanceServiceTest`: registro y totalizacion de ingresos, gastos y boletos.
+- `EventServiceTest`: seleccion, persistencia y gasto operativo generado por eventos.
+- `MonitoringServiceTest`: snapshot operativo con turistas activos, energia, eventos y vehiculos.
+- `ReportServiceTest`: resumen financiero y operativo con utilidad, eventos y satisfaccion.
+- `SimulationServiceTest`: delegacion al motor, estado actual y ultimo resultado.
+- `SimulationControllerTest` y `ReportControllerTest`: contrato basico de endpoints REST.
+- `SimulationIntegrationTest`: ejecucion completa con Spring Boot, H2 en modo PostgreSQL y Liquibase.
+
+Las pruebas de integracion usan `src/test/resources/application-test.yml` con H2 en modo compatible con PostgreSQL para mantener el ciclo rapido sin depender de Docker.
+
 ## Flujo De Simulacion
 
 1. Se inicializa el parque con dinosaurios, trabajadores, vehiculos y zonas.
