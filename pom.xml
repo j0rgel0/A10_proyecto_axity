@@ -18,7 +18,13 @@
 		<license/>
 	</licenses>
 	<developers>
-		<developer/>
+		<developer>
+			<id>a10-jorge-lopez</id>
+			<name>A10 Jorge Lopez</name>
+			<roles>
+				<role>Java Developer</role>
+			</roles>
+		</developer>
 	</developers>
 	<scm>
 		<connection/>

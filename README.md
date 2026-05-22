@@ -4,6 +4,8 @@ Simulacion secuencial de un parque turistico de dinosaurios construida con Java 
 
 El sistema modela turistas, dinosaurios, trabajadores, zonas, vehiculos, ingresos, gastos operativos, eventos aleatorios, monitoreo y reportes.
 
+Responsable tecnico: A10 Jorge Lopez.
+
 ## Herramientas
 
 - Java 17
@@ -117,7 +119,8 @@ target/site/jacoco/index.html
 5. La planta de energia consume unidades y genera gastos.
 6. Los dinosaurios incrementan hambre y se alimentan si hace falta.
 7. Puede ocurrir un evento aleatorio.
-8. Se actualiza el monitoreo y al final se genera el reporte.
+8. Salen visitantes activos de forma no determinista.
+9. Se actualiza el monitoreo y al final se genera el reporte.
 
 ## Zonas
 
@@ -148,6 +151,16 @@ Se persisten:
 - Gastos de reparacion.
 - Gastos de respuesta a eventos.
 - Eventos generados.
+
+## Reportes
+
+Los reportes incluyen:
+
+- Total de ingresos, gastos y utilidad neta.
+- Ventas por tipo: boletos, souvenirs, servicios y experiencias.
+- Gastos por tipo: energia, mantenimiento, reparacion y respuesta a eventos.
+- Eventos por tipo, activos y resueltos.
+- Satisfaccion promedio, visitantes procesados, energia final y vehiculos en uso.
 
 ## Patrones De Diseno
 
@@ -201,9 +214,12 @@ src/main/java/com/parque/dinosaurios
 - [x] Liquibase
 - [x] Configuracion YAML
 - [x] Simulacion no determinista
+- [x] Turistas, dinosaurios, trabajadores, zonas y vehiculos
+- [x] Entrada y salida de visitantes
 - [x] Zonas del parque
 - [x] Eventos aleatorios
 - [x] Monitoreo
+- [x] Satisfaccion de visitantes
 - [x] Persistencia de ingresos
 - [x] Persistencia de gastos
 - [x] Persistencia de eventos
