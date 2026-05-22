@@ -1,6 +1,7 @@
 package com.parque.dinosaurios.infrastructure.web;
 
 import com.parque.dinosaurios.application.dto.ParkReport;
+import com.parque.dinosaurios.application.service.EventService;
 import com.parque.dinosaurios.application.service.ExpenseService;
 import com.parque.dinosaurios.application.service.ReportService;
 import com.parque.dinosaurios.application.service.RevenueService;
@@ -19,16 +20,19 @@ public class ReportController {
 
     private final RevenueService revenueService;
     private final ExpenseService expenseService;
+    private final EventService eventService;
     private final ReportService reportService;
     private final SimulationService simulationService;
 
     public ReportController(
             RevenueService revenueService,
             ExpenseService expenseService,
+            EventService eventService,
             ReportService reportService,
             SimulationService simulationService) {
         this.revenueService = revenueService;
         this.expenseService = expenseService;
+        this.eventService = eventService;
         this.reportService = reportService;
         this.simulationService = simulationService;
     }
@@ -45,21 +49,13 @@ public class ReportController {
 
     @GetMapping("/events")
     public List<ParkEvent> events() {
-        return simulationService.lastResult()
-                .map(result -> result.generatedEvents())
-                .orElse(List.of());
+        return eventService.findAll();
     }
 
     @GetMapping("/summary")
     public ParkReport summary() {
         return simulationService.lastResult()
-                .map(SimulationResultAccessor::report)
+                .map(com.parque.dinosaurios.application.dto.SimulationResult::report)
                 .orElseGet(() -> reportService.build(null));
-    }
-
-    private static class SimulationResultAccessor {
-        private static ParkReport report(com.parque.dinosaurios.application.dto.SimulationResult result) {
-            return result.report();
-        }
     }
 }
