@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: parque-dinosaurios
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/dinopark}
+    username: ${SPRING_DATASOURCE_USERNAME:dinouser}
+    password: ${SPRING_DATASOURCE_PASSWORD:dinopass}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yml
+
+server:
+  port: ${SERVER_PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+park:
+  simulation:
+    steps: 8
+    min-tourists-per-step: 8
+    max-tourists-per-step: 22
+  tickets:
+    base-price: 85.00
+    child-discount: 0.50
+  dinosaurs:
+    carnivores: 3
+    herbivores: 7
+  workers:
+    rangers: 6
+    mechanics: 3
+    vendors: 5
+  vehicles:
+    safari-trucks: 4
+    capacity: 12
+  energy:
+    initial-units: 1000
+    consumption-per-step: 46
+    maintenance-cost: 120.00
+  events:
+    base-probability: 0.38
