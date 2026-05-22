@@ -1,0 +1,7 @@
+.git
+.m2
+target
+postgres-data
+.idea
+.vscode
+*.log

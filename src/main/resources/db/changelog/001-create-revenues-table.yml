@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-revenues-table
+      author: A10 Jorge Lopez
+      changes:
+        - createTable:
+            tableName: revenues
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: type
+                  type: VARCHAR(40)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amount
+                  type: DECIMAL(12,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: simulation_step
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tourist_count
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+        - createIndex:
+            tableName: revenues
+            indexName: idx_revenues_type
+            columns:
+              - column:
+                  name: type

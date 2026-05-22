@@ -1,0 +1,70 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-create-park-events-table
+      author: A10 Jorge Lopez
+      changes:
+        - createTable:
+            tableName: park_events
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: type
+                  type: VARCHAR(40)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(40)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: severity
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: energy_delta
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: satisfaction_delta
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: simulation_step
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: resolved_at
+                  type: TIMESTAMP
+        - createIndex:
+            tableName: park_events
+            indexName: idx_park_events_type
+            columns:
+              - column:
+                  name: type
+        - createIndex:
+            tableName: park_events
+            indexName: idx_park_events_status
+            columns:
+              - column:
+                  name: status

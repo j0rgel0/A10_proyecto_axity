@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-create-operational-expenses-table
+      author: A10 Jorge Lopez
+      changes:
+        - createTable:
+            tableName: operational_expenses
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: type
+                  type: VARCHAR(40)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amount
+                  type: DECIMAL(12,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: simulation_step
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+        - createIndex:
+            tableName: operational_expenses
+            indexName: idx_operational_expenses_type
+            columns:
+              - column:
+                  name: type
