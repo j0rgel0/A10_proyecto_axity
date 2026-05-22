@@ -127,6 +127,17 @@ La suite actual ejecuta 30 pruebas y esta organizada por capa para validar regla
 
 Las pruebas de integracion usan `src/test/resources/application-test.yml` con H2 en modo compatible con PostgreSQL para mantener el ciclo rapido sin depender de Docker.
 
+## CI/CD
+
+El workflow de GitHub Actions vive en `.github/workflows/ci.yml` y se ejecuta en cada push a `main` y en pull requests. El pipeline:
+
+1. Clona el repositorio.
+2. Configura Java 17 con Temurin.
+3. Asegura permiso de ejecucion para `mvnw` con `chmod +x mvnw`.
+4. Ejecuta `./mvnw -B clean verify`.
+
+El archivo `mvnw` tambien esta marcado en Git con modo ejecutable para que Linux pueda correrlo directamente.
+
 ## Flujo De Simulacion
 
 1. Se inicializa el parque con dinosaurios, trabajadores, vehiculos y zonas.
